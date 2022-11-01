@@ -2,6 +2,7 @@ package imperative;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -15,8 +16,9 @@ public class Main {
             new Person("Maria", Gender.FEMALE)
         );
         //Declarative approach to find number of females
+        Predicate<Person> personPredicate = person ->  person.gender.equals(Gender.FEMALE);
         List<Person> declarativeFemales = people.stream()
-                .filter(person -> person.gender.equals(Gender.FEMALE))
+                .filter(personPredicate)
                 .collect(Collectors.toList());
         System.out.println(declarativeFemales);
 
